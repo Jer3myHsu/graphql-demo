@@ -1,0 +1,24 @@
+<div class="home">
+  <header>
+    <img src="../../../assets/logo.png" alt="logo">
+    <div>{{'My Cart' | uppercase}}</div>
+  </header>
+  <div class="home__content">
+    <form>
+      <mat-form-field>
+        <mat-label>Max Price</mat-label>
+        <mat-icon matPrefix>attach_money</mat-icon>
+        <input type="number" matInput [formControl]="maxPrice" min="0">
+      </mat-form-field>
+    </form>
+    <div class="home__cards" *ngIf="foods$ | async as foods">
+      <mat-card *ngFor="let food of foods" (click)="openFoodDetails(food.id)">
+        <img mat-card-image [src]="food.imageUrl" [alt]="food.name">
+        <div class="home__card-content">
+          <mat-card-title>{{food.name}}</mat-card-title>
+          <mat-card-subtitle>{{food.price | currency }}</mat-card-subtitle>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

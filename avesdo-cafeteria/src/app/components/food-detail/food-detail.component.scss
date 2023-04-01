@@ -1,0 +1,57 @@
+.food-details {
+  $gray: rgba($color: #000000, $alpha: 0.6);
+
+  header {
+    display: flex;
+    align-items: center;
+    padding-top: 9px;
+
+    img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      margin-right: 16px;
+      border-radius: 50%;
+    }
+
+    h3 {
+      color: $gray;
+    }
+  }
+
+  &__content {
+    color: black;
+
+    li {
+      margin-bottom: 6px;
+    }
+  }
+
+  &__gray-text {
+    color: gray;
+  }
+
+  &__color-icon {
+    color: black;
+    -webkit-text-stroke: 1px;
+  }
+
+  &__price {
+    margin-top: 8px;
+    float: right;
+  }
+
+  footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 16px;
+
+    button {
+      margin-left: 16px;
+    }
+  }
+
+  ::ng-deep .mdc-button--raised {
+    color: white;
+  }
+}

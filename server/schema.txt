@@ -1,0 +1,26 @@
+type Ingredient {
+    id: ID
+    color: String
+    description: String
+    imageUrl: String
+    isVegetable: Boolean
+    name: String
+}
+
+type Food {
+    id: ID
+    calories: String
+    cuisine: String
+    description: String
+    imageUrl: String
+    name: String
+    price: Float
+    ingredients: [Ingredient]
+}
+
+type Query {
+    ingredient(id: ID): Ingredient
+    Food(id: ID): Food
+    allIngredients: [Ingredient]
+    allFoods(maxPrice: Float): [Food]
+}

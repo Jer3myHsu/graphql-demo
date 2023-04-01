@@ -1,0 +1,31 @@
+<div class="food-details" *ngIf="food$ | async as food">
+  <header mat-dialog-title>
+    <img [src]="food.imageUrl" [alt]="food.name">
+    <div>
+      <h1>{{food.name}}</h1>
+      <h3 *ngIf="food.cuisine">{{food.cuisine}}</h3>
+    </div>
+  </header>
+  <mat-divider></mat-divider>
+  <div class="food-details__content" mat-dialog-content>
+    <p class="food-details__gray-text">Cal {{food.calories}}</p>
+    <p>{{food.description}}</p>
+    <span>Ingredients</span>
+    <ul>
+      <ng-container *ngIf="food.ingredients">
+        <li *ngFor="let ingredient of food.ingredients" [matTooltip]="ingredient.description" [matTooltipShowDelay]="500">
+          {{ingredient.name}} <span class="food-details__color-icon" [ngStyle]="{'-webkit-text-fill-color': ingredient.color}">■</span>
+        </li>
+      </ng-container>
+      <li *ngIf="!food.ingredients">
+        No ingredients found :(
+      </li>
+    </ul>
+    <div class="food-details__price"><b>Price:</b> {{food.price | currency}}</div>
+  </div>
+  <mat-divider></mat-divider>
+  <footer mat-dialog-actions>
+    <button mat-stroked-button color="primary" [mat-dialog-close]="">{{ 'Cancel' | uppercase}}</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="" cdkFocusInitial>{{ 'Add to cart' | uppercase}}</button>
+  </footer>
+</div>
